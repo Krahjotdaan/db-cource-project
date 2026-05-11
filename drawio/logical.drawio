@@ -1,0 +1,72 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Страница-1" id="LhTceLjnl3LzhPZjgDhq">
+    <mxGraphModel dx="851" dy="471" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-18" edge="1" parent="1" source="oYKc3xAT8zpR2sWaK2VI-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" target="oYKc3xAT8zpR2sWaK2VI-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-19" edge="1" parent="1" source="oYKc3xAT8zpR2sWaK2VI-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" target="oYKc3xAT8zpR2sWaK2VI-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-1" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="users" vertex="1">
+          <mxGeometry height="150" width="180" x="590" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-2" parent="oYKc3xAT8zpR2sWaK2VI-1" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="user_id (PK): SERIAL&lt;br&gt;user_name: VARCHAR&lt;br&gt;email: VARCHAR&lt;div&gt;phone_number&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;: VARCHAR&lt;/span&gt;&lt;/div&gt;&lt;div&gt;registration_dttm: TIMESTAMP&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="180" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-3" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="trainers" vertex="1">
+          <mxGeometry height="90" width="160" x="110" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-4" parent="oYKc3xAT8zpR2sWaK2VI-3" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="trainer_id (PK): SERIAL&lt;br&gt;trainer_name: VARCHAR" vertex="1">
+          <mxGeometry height="40" width="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-21" edge="1" parent="1" source="oYKc3xAT8zpR2sWaK2VI-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" target="oYKc3xAT8zpR2sWaK2VI-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-5" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="workout_type" vertex="1">
+          <mxGeometry height="90" width="160" x="350" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-6" parent="oYKc3xAT8zpR2sWaK2VI-5" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="type_id (PK): SERIAL&lt;br&gt;type_name: VARCHAR&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-22" edge="1" parent="1" source="oYKc3xAT8zpR2sWaK2VI-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" target="oYKc3xAT8zpR2sWaK2VI-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-9" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="workouts" vertex="1">
+          <mxGeometry height="140" width="160" x="110" y="465" as="geometry">
+            <mxRectangle height="50" width="100" x="620" y="260" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-10" parent="oYKc3xAT8zpR2sWaK2VI-9" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="workout_id (PK): SERIAL&lt;div&gt;type_id (FK): INT&lt;br&gt;workout_name: VARCHAR&lt;br&gt;sessions_number: INT&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-11" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="subscriptions" vertex="1">
+          <mxGeometry height="120" width="180" x="590" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-12" parent="oYKc3xAT8zpR2sWaK2VI-11" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="subscription_id (PK): SERIAL&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;user_id&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;(FK): INT&lt;br&gt;valid_from: DATE&lt;br&gt;valid_to: DATE&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="180" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-13" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="workout_session" vertex="1">
+          <mxGeometry height="150" width="160" x="110" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-14" parent="oYKc3xAT8zpR2sWaK2VI-13" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="session_id (PK): SERIAL&lt;br&gt;&lt;div&gt;workout_id (FK)&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;: INT&lt;/span&gt;&lt;/div&gt;&lt;div&gt;trainer_id (FK): INT&lt;br&gt;session_name: VARCHAR&lt;br&gt;duration_sec&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;: INT&lt;/span&gt;&lt;/div&gt;&lt;div&gt;video_link: VARCHAR&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-15" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="user_session_logs" vertex="1">
+          <mxGeometry height="150" width="160" x="350" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-16" parent="oYKc3xAT8zpR2sWaK2VI-15" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="log_id (PK): BIGSERIAL&lt;br&gt;&lt;div&gt;user_id (FK)&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;: INT&lt;/span&gt;&lt;/div&gt;&lt;div&gt;session_id (FK): INT&lt;br&gt;started_at: TIMESTAMP&lt;br&gt;watched_duration_sec&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;: INT&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-20" edge="1" parent="1" source="oYKc3xAT8zpR2sWaK2VI-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" target="oYKc3xAT8zpR2sWaK2VI-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYKc3xAT8zpR2sWaK2VI-23" edge="1" parent="1" source="oYKc3xAT8zpR2sWaK2VI-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" target="oYKc3xAT8zpR2sWaK2VI-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
