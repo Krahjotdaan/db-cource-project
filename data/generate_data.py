@@ -8,13 +8,13 @@ fake = Faker('ru_RU')
 random.seed(42)
 
 
-NUM_USERS = 500          # Пользователей
-NUM_TYPES = 15           # Типов тренировок
-NUM_TRAINERS = 30        # Тренеров
-NUM_WORKOUTS = 100       # Комплексов тренировок
-NUM_SESSIONS = 800       # Занятий
-NUM_LOGS = 15000         # Записей в логах просмотров
-SUBSCRIPTION_HISTORY_AVG = 3 # Среднее кол-во подписок на пользователя
+NUM_USERS = 5000 # Пользователей
+NUM_TYPES = 15 # Типов тренировок
+NUM_TRAINERS = 30 # Тренеров
+NUM_WORKOUTS = 70 # Комплексов тренировок
+NUM_SESSIONS = 8000 # Занятий
+NUM_LOGS = 100000 # Записей в логах просмотров
+SUBSCRIPTION_HISTORY_AVG = 6 # Среднее кол-во подписок на пользователя
 
 users_data = []
 types_data = []
@@ -34,7 +34,7 @@ for i in range(1, NUM_TRAINERS + 1):
 # 2. Генерация Workouts 
 for i in range(1, NUM_WORKOUTS + 1):
     type_id = random.randint(1, NUM_TYPES)
-    workouts_data.append((i, type_id, f"Курс {fake.word().capitalize()} {i}", random.randint(5, 20)))
+    workouts_data.append((i, type_id, f"Курс {fake.word().capitalize()} {i}"))
 
 # 3. Генерация Sessions
 for i in range(1, NUM_SESSIONS + 1):
@@ -50,7 +50,7 @@ for i in range(1, NUM_USERS + 1):
     email = fake.email()
     phone = fake.phone_number()
         
-    reg_date = fake.date_between(start_date='-2y', end_date='-1d')
+    reg_date = fake.date_between(start_date='-1y', end_date='-1d')
     users_data.append((i, name, email, phone, reg_date))
 
 # 5. Генерация Subscriptions (SCD2 История)
@@ -69,8 +69,8 @@ for user_id in user_ids_list:
         subscriptions_data.append((sub_id, user_id, valid_from.strftime('%Y-%m-%d'), valid_to.strftime('%Y-%m-%d')))
         
         sub_id += 1
-        # Следующая подписка начинается после окончания предыдущей (или с разрывом)
-        gap = random.randint(-5, 10) # Может продлить заранее (-5 дней) или с опозданием
+        # Следующая подписка начинается после окончания предыдущей (или с перерывом)
+        gap = random.randint(0, 21)
         current_start = valid_to + timedelta(days=gap + 1)
 
 # 6. Генерация Logs (Просмотры)
@@ -95,14 +95,14 @@ for i in range(NUM_LOGS):
     started_at = random_dates[i]
     
     # Watched duration: 
-    # 70% смотрят полностью или почти полностью
-    # 20% бросают на середине
+    # 60% смотрят полностью или почти полностью
+    # 30% бросают на середине
     # 10% открывают и сразу закрывают (выбросы)
     roll = random.random()
-    if roll > 0.3:
-        watched = int(session_duration * random.uniform(0.8, 1.0))
+    if roll > 0.4:
+        watched = int(session_duration * random.uniform(0.9, 1.0))
     elif roll > 0.1:
-        watched = int(session_duration * random.uniform(0.3, 0.7))
+        watched = int(session_duration * random.uniform(0.3, 0.8))
     else:
         watched = int(session_duration * random.uniform(0.01, 0.2))
         
@@ -121,8 +121,8 @@ def save_csv(filename, data, header):
 
 save_csv('users.csv', users_data, ['user_id', 'name', 'email', 'phone_number', 'registration_dttm'])
 save_csv('workout_type.csv', types_data, ['type_id', 'type_name'])
-save_csv('trainers.csv', trainers_data, ['trainer_id', 'trainer_name'])
-save_csv('workouts.csv', workouts_data, ['workout_id', 'type_id', 'workout_name', 'session_numbers'])
+save_csv('trainers.csv', trainers_data, ['trainer_id', 'trainer_name']) 
+save_csv('workouts.csv', workouts_data, ['workout_id', 'type_id', 'workout_name'])
 save_csv('workout_sessions.csv', sessions_data, ['session_id', 'workout_id', 'trainer_id', 'session_name', 'duration_sec', 'video_link'])
 save_csv('subscriptions.csv', subscriptions_data, ['subscription_id', 'user_id', 'valid_from', 'valid_to'])
 save_csv('user_session_logs.csv', logs_data, ['log_id', 'user_id', 'session_id', 'started_at', 'watched_duration_sec'])

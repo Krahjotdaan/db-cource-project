@@ -30,8 +30,7 @@ CREATE TABLE trainers (
 CREATE TABLE workouts (
 	workout_id SERIAL PRIMARY KEY,
 	type_id INT REFERENCES workout_type(type_id),
-	workout_name VARCHAR(255) NOT NULL,
-	session_numbers INT DEFAULT 0
+	workout_name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE workout_sessions (
@@ -59,7 +58,7 @@ CREATE TABLE user_session_logs (
 	watched_duration_sec INT NOT NULL CHECK (watched_duration_sec >= 0)
 );
 
-CREATE TABLE IF NOT EXISTS tmp_subscriptions (
+CREATE TABLE tmp_subscriptions (
     user_id INT,
     valid_from DATE,
     valid_to DATE
@@ -68,38 +67,40 @@ CREATE TABLE IF NOT EXISTS tmp_subscriptions (
 
 -- 2. Загрузка данных
 COPY users(user_id, user_name, email, phone_number, registration_dttm) 
-FROM '/tmp/csv_data/users.csv' 
+FROM '/tmp/users.csv' 
 DELIMITER ',' CSV HEADER;
 
 COPY workout_type(type_id, type_name) 
-FROM '/tmp/csv_data/workout_type.csv' 
+FROM '/tmp/workout_type.csv' 
 DELIMITER ',' CSV HEADER;
 
 COPY trainers(trainer_id, trainer_name) 
-FROM '/tmp/csv_data/trainers.csv' 
+FROM '/tmp/trainers.csv' 
 DELIMITER ',' CSV HEADER;
 
-COPY workouts(workout_id, type_id, workout_name, session_numbers) 
-FROM '/tmp/csv_data/workouts.csv' 
+COPY workouts(workout_id, type_id, workout_name) 
+FROM '/tmp/workouts.csv' 
 DELIMITER ',' CSV HEADER;
 
 COPY workout_sessions(session_id, workout_id, trainer_id, session_name, duration_sec, video_link) 
-FROM '/tmp/csv_data/workout_sessions.csv' 
+FROM '/tmp/workout_sessions.csv' 
 DELIMITER ',' CSV HEADER;
 
 COPY subscriptions(subscription_id, user_id, valid_from, valid_to) 
-FROM '/tmp/csv_data/subscriptions.csv' 
+FROM '/tmp/subscriptions.csv' 
 DELIMITER ',' CSV HEADER;
 
 COPY user_session_logs(log_id, user_id, session_id, started_at, watched_duration_sec) 
-FROM '/tmp/csv_data/user_session_logs.csv' 
+FROM '/tmp/user_session_logs.csv' 
 DELIMITER ',' CSV HEADER;
 
 
 -- 3. Индексы
-CREATE INDEX IF NOT EXISTS idx_logs_user_time ON user_session_logs (user_id, started_at);
-CREATE INDEX IF NOT EXISTS idx_subs_user_dates ON subscriptions (user_id, valid_from, valid_to);
+DROP INDEX IF EXISTS idx_logs_user_time;
+DROP INDEX IF EXISTS idx_subs_user_dates;
 
+CREATE INDEX idx_logs_user_time ON user_session_logs (user_id, watched_duration_sec);
+CREATE INDEX idx_subs_user_dates ON subscriptions (user_id, valid_from, valid_to);
 
 -- 4. Триггер
 CREATE OR REPLACE FUNCTION validate_user_contacts()
@@ -147,7 +148,7 @@ BEGIN
         AND r.valid_to > valid_from;
 
         IF overlap_count > 0 THEN
-            RAISE EXCEPTION 'Новая подписка пересекается с существующей подпиской';
+            RAISE EXCEPTION 'Новая подписка пересекается с существующей';
         END IF;
 
         INSERT INTO subscriptions (user_id, valid_from, valid_to)

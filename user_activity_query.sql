@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 WITH user_activity AS (
     SELECT 
         u.user_id,
@@ -13,21 +14,25 @@ subscription_history AS (
         user_id,
         valid_from,
         valid_to,
-        LEAD(valid_from) OVER (PARTITION BY user_id ORDER BY valid_from) AS next_start
+        LEAD(valid_from) OVER (PARTITION BY user_id ORDER BY valid_from) AS next_start,
+        ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY valid_to DESC) as rn_last
     FROM subscriptions
 ),
 retention_status AS (
     SELECT 
         user_id,
         CASE 
-            WHEN BOOL_OR(
-                next_start IS NOT NULL 
-                AND next_start <= valid_to + INTERVAL '30 days'
-            ) THEN 'Retained'
+            -- 1. Active: Последняя подписка еще действует
+            WHEN MAX(CASE WHEN rn_last = 1 THEN valid_to END) >= CURRENT_DATE THEN 'Active'
+            
+            -- 2. Retained: Последняя подписка закончилась менее 45 дней назад или есть следующая запланированная подписка
+            WHEN MAX(CASE WHEN rn_last = 1 THEN next_start END) IS NOT NULL THEN 'Retained'
+            WHEN MAX(CASE WHEN rn_last = 1 THEN valid_to END) >= CURRENT_DATE - INTERVAL '45 days' THEN 'Retained'
+            
+            -- 3. Churned: Последняя подписка закончилась давно и продолжения нет
             ELSE 'Churned'
         END AS retention_status
     FROM subscription_history
-    WHERE valid_to < CURRENT_DATE 
     GROUP BY user_id
 )
 SELECT 
@@ -35,7 +40,7 @@ SELECT
     ua.user_name,
     ua.total_sessions,
     ua.avg_watched_sec,
-    COALESCE(rs.retention_status, 'No History') AS retention_status
+    COALESCE(rs.retention_status, 'No Subscriptions') AS retention_status
 FROM user_activity ua
 LEFT JOIN retention_status rs ON ua.user_id = rs.user_id
-ORDER BY ua.avg_watched_sec DESC;
+ORDER BY ua.total_sessions DESC;
