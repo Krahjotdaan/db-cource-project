@@ -94,13 +94,27 @@ COPY user_session_logs(log_id, user_id, session_id, started_at, watched_duration
 FROM '/tmp/user_session_logs.csv' 
 DELIMITER ',' CSV HEADER;
 
+SELECT setval('users_user_id_seq', (SELECT COALESCE(MAX(user_id), 0) FROM users));
+SELECT setval('workout_type_type_id_seq', (SELECT COALESCE(MAX(type_id), 0) FROM workout_type));
+SELECT setval('trainers_trainer_id_seq', (SELECT COALESCE(MAX(trainer_id), 0) FROM trainers));
+SELECT setval('workouts_workout_id_seq', (SELECT COALESCE(MAX(workout_id), 0) FROM workouts));
+SELECT setval('workout_sessions_session_id_seq', (SELECT COALESCE(MAX(session_id), 0) FROM workout_sessions));
+SELECT setval('subscriptions_subscription_id_seq', (SELECT COALESCE(MAX(subscription_id), 0) FROM subscriptions));
+SELECT setval('user_session_logs_log_id_seq', (SELECT COALESCE(MAX(log_id), 0) FROM user_session_logs));
+
 
 -- 3. Индексы
-DROP INDEX IF EXISTS idx_logs_user_time;
-DROP INDEX IF EXISTS idx_subs_user_dates;
+DROP INDEX IF EXISTS idx_subs_covering;
+CREATE INDEX idx_subs_covering ON subscriptions (user_id, valid_from, valid_to DESC) INCLUDE (subscription_id);
 
-CREATE INDEX idx_logs_user_time ON user_session_logs (user_id, watched_duration_sec);
-CREATE INDEX idx_subs_user_dates ON subscriptions (user_id, valid_from, valid_to);
+
+ANALYZE users;
+ANALYZE workout_type;
+ANALYZE trainers;
+ANALYZE workouts;
+ANALYZE workout_sessions;
+ANALYZE subscriptions;
+ANALYZE user_session_logs;
 
 -- 4. Триггер
 CREATE OR REPLACE FUNCTION validate_user_contacts()

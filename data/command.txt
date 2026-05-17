@@ -1,0 +1,7 @@
+docker cp .\subscriptions.csv db_cource_project:/tmp/
+docker cp .\trainers.csv db_cource_project:/tmp/
+docker cp .\user_session_logs.csv db_cource_project:/tmp/       
+docker cp .\users.csv db_cource_project:/tmp/
+docker cp .\workout_sessions.csv db_cource_project:/tmp/        
+docker cp .\workout_type.csv db_cource_project:/tmp/
+docker cp .\workouts.csv db_cource_project:/tmp/

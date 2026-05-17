@@ -1,5 +1,3 @@
-SELECT setval('subscriptions_subscription_id_seq', (SELECT COALESCE(MAX(subscription_id), 0) FROM subscriptions));
-
 SELECT subscription_id, user_id, valid_from, valid_to 
 FROM subscriptions 
 WHERE user_id = 1 

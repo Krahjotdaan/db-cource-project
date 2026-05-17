@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 YaBrowser/26.3.0.0 Safari/537.36">
   <diagram name="Страница-1" id="QtXKY4t0YJW_ua8vzhSD">
-    <mxGraphModel dx="2126" dy="719" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2881" dy="1144" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -18,7 +18,7 @@
             <mxPoint x="1240" y="710" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UMxechYhsrLa3tf-jy1z-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="(name) (ФИО)" vertex="1">
+        <mxCell id="UMxechYhsrLa3tf-jy1z-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="(user_name)" vertex="1">
           <mxGeometry height="40" width="100" x="1290" y="740" as="geometry" />
         </mxCell>
         <mxCell id="JUzkNx1f07157sJ1C3oI-56" edge="1" parent="1" source="UMxechYhsrLa3tf-jy1z-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;">
@@ -91,13 +91,10 @@
           <mxGeometry height="40" width="100" x="1100" y="330" as="geometry" />
         </mxCell>
         <mxCell id="UMxechYhsrLa3tf-jy1z-27" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;u&gt;workout_id&lt;/u&gt;" vertex="1">
-          <mxGeometry height="40" width="100" x="1290" y="270" as="geometry" />
+          <mxGeometry height="40" width="100" x="1270" y="290" as="geometry" />
         </mxCell>
         <mxCell id="UMxechYhsrLa3tf-jy1z-28" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="workout_name" vertex="1">
-          <mxGeometry height="40" width="100" x="1290" y="330" as="geometry" />
-        </mxCell>
-        <mxCell id="UMxechYhsrLa3tf-jy1z-29" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="sessions_number" vertex="1">
-          <mxGeometry height="40" width="100" x="1290" y="390" as="geometry" />
+          <mxGeometry height="40" width="100" x="1270" y="370" as="geometry" />
         </mxCell>
         <mxCell id="UMxechYhsrLa3tf-jy1z-30" edge="1" parent="1" source="UMxechYhsrLa3tf-jy1z-26" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="UMxechYhsrLa3tf-jy1z-27" value="">
           <mxGeometry relative="1" as="geometry">
@@ -106,12 +103,6 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="UMxechYhsrLa3tf-jy1z-31" edge="1" parent="1" source="UMxechYhsrLa3tf-jy1z-26" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="UMxechYhsrLa3tf-jy1z-28" value="">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="920" y="280" as="sourcePoint" />
-            <mxPoint x="1080" y="280" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="UMxechYhsrLa3tf-jy1z-32" edge="1" parent="1" source="UMxechYhsrLa3tf-jy1z-26" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="UMxechYhsrLa3tf-jy1z-29" value="">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="920" y="280" as="sourcePoint" />
             <mxPoint x="1080" y="280" as="targetPoint" />
